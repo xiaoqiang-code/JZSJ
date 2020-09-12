@@ -1,0 +1,100 @@
+<van-notify style="z-index:999999999;" id="van-notify" />
+<view class="container">
+  <view class="myself" style="display: flex;">
+    <view style="width: 30%;text-align: center;margin-top:20px;margin-left: 5%;">
+      <van-image width="4rem" height="4rem" round fit="cover" src="{{avatarUrl}}" />
+      <view style="margin-top: 15px;margin-bottom: 20px;color:#03BCD4">
+        <van-button wx:if="{{nickName==''}}" lang="zh_CN" round plain size="small" color="#03BCD4" type="primary" open-type="getUserInfo" bindgetuserinfo="onGetOpenid">登录</van-button>
+        <view  wx:if="{{nickName!=''}}">{{nickName}}</view>
+      </view>
+    </view>
+    <view style="width: 55%; height:80px;text-align: center;margin-top:25px;margin-left: 10%;">
+      <view style="display: flex; margin-top:5px;">
+        <view>
+          <van-icon name="wap-home-o" color="#03BCD4" size="22px"/>
+        </view>
+        <view style="margin-left:3%;margin-top: 1px;">
+          <text style="font-size:15px;color:#03BCD4;">我的家</text>
+        </view>
+      </view>
+      <view style="display: flex;margin-top:5px;">
+        <view>
+          <van-icon name="underway-o" color="#03BCD4" size="22px"/>
+        </view>
+        <view style="margin-left:3%;">
+          <text style="font-size:15px;color:#03BCD4;">装修进度</text>
+        </view>
+      </view>
+      <view style="display: flex;margin-top:5px;">
+        <view>
+          <van-icon name="gold-coin-o" color="#03BCD4" size="22px"/>
+        </view>
+        <view style="margin-left:3%;">
+          <text style="font-size:15px;color:#03BCD4;">装修花费:</text>
+        </view>
+        <view style="margin-left:3%;padding-top: 2px;">
+          <text style="font-size:15px;color:#03BCD4;">{{money}}</text>
+        </view>
+        <view wx:if="{{nickName!=''}}" style="margin-left:5%;">
+          <van-icon name="edit" color="#03BCD4" size="20px" bindtap="showCustomDialog"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mytype myself">
+    <van-grid gutter="{{ 0 }}">
+      <van-grid-item icon="../../images/jiadian.png" bindtap="appliance" text="电器"/>
+      <van-grid-item icon="../../images/jiaju.png" bindtap="furniture" text="家具"/>
+      <van-grid-item icon="../../images/jiajv.png" bindtap="household" text="家居"/>
+      <van-grid-item icon="../../images/weiyu.png" bindtap="bathroom" text="卫浴"/>
+      <van-grid-item icon="../../images/dengju.png" bindtap="wallpaper" text="灯具"/>
+      <van-grid-item icon="../../images/diban.png" bindtap="floor" text="地板/瓷砖"/>
+      <van-grid-item icon="../../images/kaiguan.png" bindtap="switch" text="开关/插座"/>
+      <van-grid-item icon="../../images/qita.png" bindtap="other" text="其他"/>
+    </van-grid>
+  </view>
+  <view style="width: 94%;display: flex;margin-top:20px;">
+    <view class="myself" style="width: 49%;">
+      <van-grid clickable  column-num="1">
+        <van-grid-item
+          icon="orders-o"
+          icon-color="#03BCD4" 
+          link-type="navigateTo"
+          text="物品清单"
+          bindtap="list"
+        />
+      </van-grid>
+    </view>
+    <view class="myself" style="width: 49%;margin-left:2%;">
+      <van-grid clickable  column-num="1">
+        <van-grid-item
+          icon="chat-o"
+          icon-color="#03BCD4"
+          link-type="navigateTo"
+          bindtap="factionalism"
+          text="互动圈子"
+        />
+      </van-grid>
+    </view>
+  </view>
+</view>
+<van-dialog
+    use-slot
+    title="装修花费"
+    show="{{ showmoney }}"
+    show-cancel-button
+    bind:cancel="onClose2"
+    bind:confirm="suremoney"
+    style="color:#03BCD4;"
+    confirm-button-color="#03BCD4"
+  >
+  <van-cell-group>
+    <van-field
+      value="{{moneydata}}"
+      type="number"
+      clearable
+      placeholder="请输入钱数"
+      bind:change="moneyChange"
+    />
+  </van-cell-group>
+  </van-dialog>

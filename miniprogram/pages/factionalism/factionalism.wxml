@@ -1,0 +1,11 @@
+<view style="height:100vh;">
+<view style="width:100%;height:30vh;border:1px solid green;">
+
+</view>
+<view style="width:100%;height:30vh;border:1px solid red;margin-top:5vh;">
+
+</view>
+<view style="width:100%;height:30vh;border:1px solid green;margin-top:5vh;">
+
+</view>
+</view>

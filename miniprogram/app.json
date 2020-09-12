@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/field/field",
+    "pages/list/list",
+    "pages/factionalism/factionalism",
+    "pages/update/update"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#03BCD4",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "./dist/button/index",
+    "van-image": "./dist/image/index",
+    "van-field": "./dist/field/index",
+    "van-notify": "./dist/notify/index",
+    "van-grid": "./dist/grid/index",
+    "van-grid-item": "./dist/grid-item/index",
+    "van-uploader": "./dist/uploader/index",
+    "van-panel": "./dist/panel/index",
+    "van-icon": "./dist/icon/index",
+    "van-dropdown-menu": "./dist/dropdown-menu/index",
+    "van-dropdown-item": "./dist/dropdown-item/index",
+    "van-switch": "./dist/switch/index",
+    "van-cell": "./dist/cell/index",
+    "van-cell-group": "./dist/cell-group/index",
+    "van-stepper": "./dist/stepper/index",
+    "van-checkbox": "./dist/checkbox/index",
+    "van-checkbox-group": "./dist/checkbox-group/index",
+    "van-action-sheet": "./dist/action-sheet/index",
+    "van-divider": "./dist/divider/index",
+    "van-swipe-cell": "./dist/swipe-cell/index",
+    "van-empty": "./dist/empty/index",
+    "van-dialog": "./dist/dialog/index"
+
+  }  
+}

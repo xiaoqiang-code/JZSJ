@@ -1,0 +1,76 @@
+
+<view style="height:{{windowHeight}}px;">
+  <view style="height:{{windowHeight1}}px;">
+    <van-dropdown-menu active-color="#03BCD4">
+      <van-dropdown-item value="{{ value1 }}" bind:change="select" options="{{ option1 }}" />
+      <van-dropdown-item id="item" title="{{ itemTitle }}">
+        <view style="width:100%;display: flex;align-items: center;">
+          <van-checkbox-group style="width: 100%;" value="{{ result }}" bind:change="onChange">
+            <view style="width:100%;height:50px;display: flex;align-items: center;">
+              <van-checkbox checked-color="#03BCD4" shape="square" name="客厅" style="margin-left: 3%;"><text style="color:#03BCD4;">客厅</text></van-checkbox>
+              <van-checkbox checked-color="#03BCD4" shape="square" name="主卧" style="margin-left: 5%;"><text style="color:#03BCD4;">主卧</text></van-checkbox>
+              <van-checkbox checked-color="#03BCD4" shape="square" name="次卧" style="margin-left: 5%;"><text style="color:#03BCD4;">次卧</text></van-checkbox>
+              <van-checkbox checked-color="#03BCD4" shape="square" name="卫生间" style="margin-left: 5%;"><text style="color:#03BCD4;">卫生间</text></van-checkbox>
+            </view>
+            <view style="width:100%;height:50px;display: flex;align-items: center;">
+              <van-checkbox checked-color="#03BCD4" shape="square" name="厨房" style="margin-left: 3%;"><text style="color:#03BCD4;">厨房</text></van-checkbox>
+              <van-checkbox checked-color="#03BCD4" shape="square" name="餐厅" style="margin-left: 5%;"><text style="color:#03BCD4;">餐厅</text></van-checkbox>
+              <van-checkbox checked-color="#03BCD4" shape="square" name="阳台" style="margin-left: 5%;"><text style="color:#03BCD4;">阳台</text></van-checkbox>
+            </view>
+          </van-checkbox-group>
+        </view>
+        <van-button color="#03BCD4" type="info" block bind:click="onConfirm">
+          确定
+        </van-button>
+      </van-dropdown-item>
+    </van-dropdown-menu>
+  </view>
+
+  <view wx:if="{{list.length!=0}}">
+    <scroll-view scroll-y="true" style="height:{{windowHeight2}}px;">
+      <view class="{{index!=0?'myself':'myself2'}}" wx:for="{{list}}" wx:for-item="item">
+        <van-swipe-cell  right-width="{{ 65 }}">
+          <view style="width:100%;height:170px;color:#03BCD4;">
+            <view style="width:100%;height:19px;display: flex;padding-top:3px;">
+              <view style="width:35%;margin-left:3%;">名称：{{item.name}}</view>
+              <view style="width:35%;margin-left:10%;">价格：￥{{item.price}}</view>
+            </view>
+            <view style="width:100%;height:19px;display: flex;margin-top: 5px;">
+              <view style="width:35%;margin-left:3%;">数量：{{item.number}}</view>
+              <view style="width:35%;margin-left:10%;">位置：{{item.location}}</view>
+            </view>
+            <view style="width:100%;height:20px;display: flex;margin-top: 5px;">
+              <view style="width:90%;margin-left:3%;">备注：{{item.remark}}</view>
+            </view>
+            <scroll-view scroll-y="true" class="{{item.images.length<=4?'myimage2':'myimage'}}">
+              <van-uploader
+                max-count="0"
+                file-list="{{ item.images }}"
+                multiple
+                bind:after-read="afterRead"
+                bind:click-preview="clickPreview"
+              />
+            </scroll-view>
+          </view>
+          <view slot="right" bindtap="update" data-id="{{item._id}}" data-name="{{item.name}}" data-price="{{item.price}}" data-number="{{item.number}}" data-location="{{item.location}}" data-remark="{{item.remark}}" data-imglist="{{ item.images }}" style="border-radius:0px 10px 10px 0px;" class="van-swipe-cell__right">修改</view>
+        </van-swipe-cell>
+      </view>
+      <view style="width:30%;height:20px;margin-left:35%;">
+        <van-divider
+        contentPosition="center"
+        customStyle="color: #03BCD4; border-color: #03BCD4; font-size: 12px;"
+        >
+        没有更多了
+      </van-divider>
+      </view>
+    </scroll-view>
+    
+
+  </view>
+  <view wx:if="{{list.length==0}}">
+    <van-empty description="没有相关数据" />
+  </view>
+    
+</view>
+
+

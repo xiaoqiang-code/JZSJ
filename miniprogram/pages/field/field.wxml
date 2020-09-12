@@ -1,0 +1,73 @@
+<van-notify id="van-notify" />
+<view style="height:{{windowHeight}}px;">
+<view style="height:45%;">
+  <van-cell-group>
+    <van-field
+      required
+      label="名称"
+      placeholder="请输入名称"
+      bind:change="name"
+    />
+  
+    <van-field
+      required
+      label="价格"
+      placeholder="请输入价格"
+      bind:change="price"
+    />
+  
+  
+    <van-cell title="数量">
+      <van-stepper bind:change="numChange" value="{{ 1 }}" integer />
+    </van-cell>
+  
+  
+    <van-cell title="位置" is-link value="{{location}}" bind:click="selectlocation"/>
+  
+    <van-action-sheet
+    show="{{ show }}"
+    actions="{{ actions }}"
+    cancel-text="取消"
+    bind:close="selectlocation"
+    bind:cancel="close"
+    bind:select="onSelect"
+  />  
+    <van-field
+      value="{{ message }}"
+      label="备注"
+      type="textarea"
+      placeholder="请输入备注"
+      autosize
+      bind:change="remark"
+    />
+  </van-cell-group>
+  
+</view>
+<view style="height:30%;">
+  <van-divider
+    contentPosition="center"
+    customStyle="color: #03BCD4; border-color: #03BCD4; font-size: 12px;"
+  >
+    在下方上传物品图片
+  </van-divider>
+  <scroll-view scroll-y="true" style="height:100%;">
+    <view style="margin-left: 6%;">
+      <van-uploader
+      name="2" 
+      accept="image"
+      file-list="{{ fileList }}"
+      multiple="true"
+      bind:after-read="afterRead"
+      bind:delete="delete"
+      bind:click-preview="clickPreview"
+      />
+    </view>
+  </scroll-view>
+</view>
+
+<view style="width:80%;height:10%;margin-left:10%;margin-top:15%;">
+  <van-button type="primary" color="#03BCD4" bindtap="save" size="large" round plain>保存</van-button>
+</view>
+
+
+</view>
